@@ -1,0 +1,26 @@
+<!DOCTYPE>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<header th:replace="~{fragmentos :: header('Pessoa #' + ${pessoa.id})}"></header>
+
+<main>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <b>Nome:</b> <span th:text="${pessoa.nome}"></span><br/>
+                <b>Data de Nascimento:</b> <span th:text="${pessoa.datanascimento}"></span><br/>
+                <b>Funcionário:</b> <span th:text="${pessoa.funcionario}"></span>
+                <b>Cpf:</b> <span th:text="${pessoa.cpf}"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <a th:href="@{/templates/pessoas/{pessoaId}/edit(pessoaId = ${pessoa.id})}">Editar</a> <a href="/pessoas">Voltar</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
