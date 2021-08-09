@@ -1,15 +1,13 @@
-package br.com.portaldeprojetos.api.controllers;
+package br.com.portaldeprojetos.api.controllers.templates;
 
 import br.com.portaldeprojetos.api.dtos.assembler.ProjetoModelAssembler;
 import br.com.portaldeprojetos.api.dtos.disassembler.ProjetoInputDisassembler;
-import br.com.portaldeprojetos.api.dtos.input.PessoaInput;
 import br.com.portaldeprojetos.api.dtos.input.ProjetoInput;
 import br.com.portaldeprojetos.domain.exception.ProjetoNaoEncontradoException;
 import br.com.portaldeprojetos.domain.repository.PessoaRepository;
 import br.com.portaldeprojetos.domain.repository.ProjetoRepository;
-import br.com.portaldeprojetos.domain.service.ProjetoService;
+import br.com.portaldeprojetos.service.ProjetoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -28,7 +26,8 @@ public class ProjetoController {
   @Autowired
   private ProjetoRepository projetoRepository;
 
-  @Autowired ProjetoService projetoService;
+  @Autowired
+  private ProjetoService projetoService;
 
   @Autowired
   private ProjetoModelAssembler projetoModelAssembler;
@@ -97,14 +96,8 @@ public class ProjetoController {
   public ModelAndView delete(@PathVariable Long projetoId) {
     var modelAndView = new ModelAndView("redirect:/projetos");
 
-    projetoService.deleteById(projetoId);
+    projetoService.remover(projetoId);
 
     return modelAndView;
-  }
-
-  @PostMapping("/{pessoaId}/associar/{projetoId}")
-  @ResponseStatus(HttpStatus.NO_CONTENT)
-  public void associar(@PathVariable Long pessoaId, @PathVariable Long projetoId) {
-    projetoService.associarMembro(pessoaId, projetoId);
   }
 }

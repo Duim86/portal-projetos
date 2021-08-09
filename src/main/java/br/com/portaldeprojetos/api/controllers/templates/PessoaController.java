@@ -1,16 +1,15 @@
-package br.com.portaldeprojetos.api.controllers;
+package br.com.portaldeprojetos.api.controllers.templates;
 
 import br.com.portaldeprojetos.api.dtos.assembler.PessoaModelAssembler;
 import br.com.portaldeprojetos.api.dtos.disassembler.PessoaInputDisassembler;
 import br.com.portaldeprojetos.api.dtos.input.PessoaInput;
 import br.com.portaldeprojetos.domain.exception.PessoaNaoEncontradaException;
 import br.com.portaldeprojetos.domain.repository.PessoaRepository;
-import br.com.portaldeprojetos.domain.service.PessoaService;
+import br.com.portaldeprojetos.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;

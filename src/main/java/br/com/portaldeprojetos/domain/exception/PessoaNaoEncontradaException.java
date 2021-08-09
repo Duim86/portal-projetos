@@ -1,13 +1,17 @@
 package br.com.portaldeprojetos.domain.exception;
 
-public class PessoaNaoEncontradaException extends RuntimeException{
-      public static final long serialVersionUID = 1L;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-    public PessoaNaoEncontradaException(String mensagem) {
-      super(mensagem);
-    }
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class PessoaNaoEncontradaException extends RuntimeException {
+  public static final long serialVersionUID = 1L;
 
-    public PessoaNaoEncontradaException(Long pessoaId) {
-      this("Não existe um cadastro de projeto com código " + pessoaId);
-    }
+  public PessoaNaoEncontradaException(String mensagem) {
+    super(mensagem);
+  }
+
+  public PessoaNaoEncontradaException(Long pessoaId) {
+    this("Não existe um cadastro de projeto com código " + pessoaId);
+  }
 }

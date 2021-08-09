@@ -1,36 +1,39 @@
 package br.com.portaldeprojetos.domain.model;
 
-import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Projeto {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @EqualsAndHashCode.Include
   private Long id;
 
   @Column(nullable = false)
   private String nome;
 
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
   private LocalDate dataInicio;
 
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
   private LocalDate dataPrevisaoFim;
 
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
   private LocalDate dataFim;
 
   private String descricao;
 
   @Enumerated(EnumType.STRING)
-  private Status status;
+  private Status status = Status.EM_ANALISE;
 
   private BigDecimal orcamento;
 
@@ -39,7 +42,7 @@ public class Projeto {
 
   @OneToOne
   @JoinColumn(name = "idgerente")
-  private Pessoa idgerente;
+  private Pessoa gerente;
 
   @ManyToMany
   @JoinTable(
@@ -47,9 +50,13 @@ public class Projeto {
           joinColumns = @JoinColumn(name = "idprojeto"),
           inverseJoinColumns = @JoinColumn(name = "idpessoa")
   )
-  Set<Pessoa> membros;
+  private Set<Pessoa> membros = new HashSet<>();
 
   public void adicionarPessoa(Pessoa pessoa) {
     getMembros().add(pessoa);
+  }
+
+  public void removerPessoa(Pessoa pessoa) {
+    getMembros().remove(pessoa);
   }
 }

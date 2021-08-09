@@ -10,5 +10,5 @@ import javax.validation.constraints.NotNull;
 public class GerenteIdInput {
 
   @NotNull
-  private Long idgerente;
+  private Long id;
 }

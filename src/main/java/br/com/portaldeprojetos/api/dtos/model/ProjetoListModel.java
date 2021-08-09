@@ -4,21 +4,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Getter
 @Setter
-public class PessoaModel {
+public class ProjetoListModel {
   private Long id;
 
   private String nome;
 
-  private LocalDate dataNascimento;
+  private LocalDate dataInicio;
 
-  private String cpf;
+  private LocalDate dataPrevisaoFim;
 
-  private Boolean funcionario;
-
-  private List<ProjetoListModel> projetos;
-
+  private String nomeGerente;
 }

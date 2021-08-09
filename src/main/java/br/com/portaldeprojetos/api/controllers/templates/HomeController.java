@@ -1,4 +1,4 @@
-package br.com.portaldeprojetos.api.controllers;
+package br.com.portaldeprojetos.api.controllers.templates;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

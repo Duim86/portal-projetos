@@ -1,9 +1,8 @@
 package br.com.portaldeprojetos.api.dtos.assembler;
 
+import br.com.portaldeprojetos.api.dtos.model.PessoaListModel;
 import br.com.portaldeprojetos.api.dtos.model.PessoaModel;
-import br.com.portaldeprojetos.api.dtos.model.ProjetoModel;
 import br.com.portaldeprojetos.domain.model.Pessoa;
-import br.com.portaldeprojetos.domain.model.Projeto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,9 +21,15 @@ public class PessoaModelAssembler {
     return modelMapper.map(pessoa, PessoaModel.class);
   }
 
-  public List<PessoaModel> toCollectionModel(List<Pessoa> pessoas){
+  public PessoaListModel toModelList(Pessoa pessoa) {
+    return modelMapper.map(pessoa, PessoaListModel.class);
+  }
+
+  public List<PessoaListModel> toCollectionModel(List<Pessoa> pessoas){
     return pessoas.stream()
-            .map(this::toModel)
+            .map(this::toModelList)
             .collect(Collectors.toList());
   }
+
+
 }

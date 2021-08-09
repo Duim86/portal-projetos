@@ -1,5 +1,6 @@
 package br.com.portaldeprojetos.api.dtos.assembler;
 
+import br.com.portaldeprojetos.api.dtos.model.ProjetoListModel;
 import br.com.portaldeprojetos.api.dtos.model.ProjetoModel;
 import br.com.portaldeprojetos.domain.model.Projeto;
 import org.modelmapper.ModelMapper;
@@ -20,9 +21,15 @@ public class ProjetoModelAssembler {
     return modelMapper.map(projeto, ProjetoModel.class);
   }
 
-  public List<ProjetoModel> toCollectionModel(List<Projeto> projetos){
+  public ProjetoListModel toModelList(Projeto projeto) {
+    return modelMapper.map(projeto, ProjetoListModel.class);
+  }
+
+  public List<ProjetoListModel> toCollectionModel(List<Projeto> projetos) {
     return projetos.stream()
-            .map(this::toModel)
+            .map(this::toModelList)
             .collect(Collectors.toList());
   }
+
+
 }

@@ -16,7 +16,7 @@ public class PessoaInput {
   private String nome;
 
   @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private LocalDate datanascimento;
+  private LocalDate dataNascimento;
 
   @CPF
   private String cpf;

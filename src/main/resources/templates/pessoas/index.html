@@ -30,17 +30,17 @@
                 <tr th:each="pessoa : ${pessoas}">
                     <th class="col-1" scope="row" th:text="${pessoa.getId()}">ID</th>
                     <td class="col-3" th:text="${pessoa.nome}">Nome</td>
-                    <td class="col-1"><a th:href="@{/pessoas/{pessoaId}(pessoaId = ${pessoa.id})}">Detalhes</a></td>
-                    <td class="col-1"><a th:href="@{/pessoas/{pessoaId}/edit(pessoaId = ${pessoa.id})}">Editar</a></td>
-                    <td class="col-1"><a th:href="@{/pessoas/{pessoaId}/delete(pessoaId = ${pessoa.id})}">Deletar</a>
+                    <td class="col-1"><a class=" btn btn-primary" th:href="@{/pessoas/{pessoaId}(pessoaId = ${pessoa.id})}">Detalhes</a></td>
+                    <td class="col-1"><a class=" btn btn-secondary" th:href="@{/pessoas/{pessoaId}/edit(pessoaId = ${pessoa.id})}">Editar</a></td>
+                    <td class="col-1"><a class=" btn btn-danger" th:href="@{/pessoas/{pessoaId}/delete(pessoaId = ${pessoa.id})}">Deletar</a>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="row">
-        <a href="/pessoas/new">Nova Pessoa</a>
+    <div>
+        <a class=" btn btn-dark" href="/pessoas/new">Nova Pessoa</a>
     </div>
 </div>
 

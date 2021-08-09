@@ -1,12 +1,11 @@
 package br.com.portaldeprojetos.api.dtos.model;
 
-import br.com.portaldeprojetos.domain.model.Pessoa;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,7 +14,7 @@ public class ProjetoModel {
 
   private String nome;
 
-  private Date dataInicio;
+  private LocalDate dataInicio;
 
   private LocalDate dataPrevisaoFim;
 
@@ -29,6 +28,7 @@ public class ProjetoModel {
 
   private String risco;
 
-  private Pessoa idgerente;
+  private PessoaResumoModel gerente;
 
+  private List<PessoaResumoModel> membros;
 }
