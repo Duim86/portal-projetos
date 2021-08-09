@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class PessoaNaoEncontradaException extends RuntimeException {
+public class PessoaNaoEncontradaException extends EntidadeNaoEncontradaException {
   public static final long serialVersionUID = 1L;
 
   public PessoaNaoEncontradaException(String mensagem) {
@@ -12,6 +12,6 @@ public class PessoaNaoEncontradaException extends RuntimeException {
   }
 
   public PessoaNaoEncontradaException(Long pessoaId) {
-    this("Não existe um cadastro de projeto com código " + pessoaId);
+    this("Não existe um cadastro de pessoa com código " + pessoaId);
   }
 }
